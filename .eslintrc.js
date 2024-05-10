@@ -5,8 +5,8 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		"@remix-run/eslint-config",
-		"@remix-run/eslint-config/node",
+		"@react-router/eslint-config",
+		"@react-router/eslint-config/node",
 		"eslint:recommended",
 		"plugin:eslint-comments/recommended",
 		"plugin:regexp/recommended",

@@ -1,5 +1,4 @@
-import { unstable_defineLoader } from "@remix-run/node";
-import { type MetaFunction, useLoaderData } from "@remix-run/react";
+import { type MetaFunction, useLoaderData } from "react-router";
 
 import { PageGrid } from "~/components/PageGrid";
 import { constructSiteTitle } from "~/utils/common";
@@ -10,10 +9,10 @@ export const meta: MetaFunction = () => {
 	return [{ title: constructSiteTitle("About") }];
 };
 
-export const loader = unstable_defineLoader(() => team);
+export const loader = () => team;
 
 export default function About() {
-	const data = useLoaderData<typeof loader>();
+	const data = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

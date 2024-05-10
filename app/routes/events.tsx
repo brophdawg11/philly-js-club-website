@@ -1,6 +1,5 @@
-import { unstable_defineLoader } from "@remix-run/node";
-import type { MetaFunction } from "@remix-run/react";
-import { useLoaderData } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
+import { useLoaderData } from "react-router";
 
 import { CalendarSubscriptionLinks } from "~/components/CalendarSubscriptionLinks";
 import { EventDetails } from "~/components/EventDetails";
@@ -10,16 +9,16 @@ import { constructSiteTitle, groupBy } from "~/utils/common";
 
 import events from "../data/events.json";
 
-export const loader = unstable_defineLoader(() => {
+export const loader = () => {
 	return groupBy(events, (event) => new Date(event.date).getFullYear());
-});
+};
 
 export const meta: MetaFunction = () => {
 	return [{ title: constructSiteTitle("Events") }];
 };
 
 export default function Events() {
-	const data = useLoaderData<typeof loader>();
+	const data = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

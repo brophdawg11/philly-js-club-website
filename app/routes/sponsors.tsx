@@ -1,5 +1,4 @@
-import { unstable_defineLoader } from "@remix-run/node";
-import { type MetaFunction, useLoaderData } from "@remix-run/react";
+import { type MetaFunction, useLoaderData } from "react-router";
 
 import { Icons } from "~/components/Icons";
 import { PageGrid } from "~/components/PageGrid";
@@ -7,14 +6,14 @@ import { constructSiteTitle } from "~/utils/common";
 
 import sponsors from "../data/sponsors.json";
 
-export const loader = unstable_defineLoader(() => sponsors);
+export const loader = () => sponsors;
 
 export const meta: MetaFunction = () => {
 	return [{ title: constructSiteTitle("Sponsors") }];
 };
 
 export default function Sponsors() {
-	const sponsors = useLoaderData<typeof loader>();
+	const sponsors = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid
