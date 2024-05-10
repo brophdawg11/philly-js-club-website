@@ -1,5 +1,5 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { installGlobals } from "@remix-run/node";
+import { vitePlugin as remix } from "@react-router/dev";
+import { installGlobals } from "@react-router/node";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -9,9 +9,6 @@ export default defineConfig({
 	plugins: [
 		remix({
 			ignoredRouteFiles: ["**/.*"],
-			future: {
-				unstable_singleFetch: true,
-			},
 		}),
 		tsconfigPaths(),
 	],

@@ -1,5 +1,4 @@
-import { unstable_defineLoader } from "@remix-run/node";
-import { type MetaFunction, useLoaderData } from "@remix-run/react";
+import { type MetaFunction, useLoaderData } from "react-router";
 
 import { Icons } from "~/components/Icons";
 import { PageGrid } from "~/components/PageGrid";
@@ -7,14 +6,14 @@ import { constructSiteTitle } from "~/utils/common";
 
 import platforms from "../data/platforms.json";
 
-export const loader = unstable_defineLoader(() => platforms);
+export const loader = () => platforms;
 
 export const meta: MetaFunction = () => {
 	return [{ title: constructSiteTitle("Join Us") }];
 };
 
 export default function Socials() {
-	const platforms = useLoaderData<typeof loader>();
+	const platforms = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid
