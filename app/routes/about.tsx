@@ -14,7 +14,7 @@ export function loader() {
 }
 
 export default function About() {
-	const data = useLoaderData<typeof loader>();
+	const data = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

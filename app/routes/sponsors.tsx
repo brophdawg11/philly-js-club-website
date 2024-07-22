@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Sponsors() {
-	const sponsors = useLoaderData<typeof loader>();
+	const sponsors = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

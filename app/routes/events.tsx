@@ -18,8 +18,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Events() {
-	const data = useLoaderData<typeof loader>();
-	console.log(data);
+	const data = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

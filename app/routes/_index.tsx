@@ -33,7 +33,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-	const events = useLoaderData<typeof loader>();
+	const events = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid

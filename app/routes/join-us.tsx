@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Socials() {
-	const platforms = useLoaderData<typeof loader>();
+	const platforms = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
 	return (
 		<PageGrid
