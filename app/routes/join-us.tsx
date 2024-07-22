@@ -1,4 +1,4 @@
-import { type MetaFunction, useLoaderData } from "@remix-run/react";
+import { type MetaFunction, useLoaderData } from "react-router";
 
 import { Icons } from "~/components/Icons";
 import { PageGrid } from "~/components/PageGrid";
